@@ -36,10 +36,12 @@
                 <p class="card-text"><strong>Rating:</strong> {{ gig.rating }}/10</p>
                 <p class="card-text"><i>Reviewed By: {{ gig.created_by }}</i></p>
             </div>
+            {% if session.user|lower() == gig.created_by|lower() %}
             <div class="card-action orange-text text-darken-2">
                 <a href="#">Edit</a>
                 <a href="#">Delete</a>
             </div>
+            {% endif %}
         </div>
     </div>
     {% endif %}
