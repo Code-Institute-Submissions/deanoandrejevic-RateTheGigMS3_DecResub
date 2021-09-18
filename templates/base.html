@@ -19,7 +19,8 @@
     <header>
         <nav class="nav-extended">
             <div class="nav-wrapper black">
-                <a href="{{ url_for('all_gigs') }}" class="brand-logo brand-nav"><i class="far fa-hand-rock"></i>Rate The Gig!</a>
+                <a href="{{ url_for('all_gigs') }}" class="brand-logo brand-nav"><i class="far fa-hand-rock"></i>Rate
+                    The Gig!</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('all_gigs') }}">Home</a></li>
@@ -40,11 +41,20 @@
             <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
-
-        {% block home %} {% endblock %}
     </header>
-
-
+    <section>
+        <!-- Flash Messages! -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="flashes">
+            <h5 class="black white-text center-align">{{ message }}</h5>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
+    {% block home %} {% endblock %}
 
     <main class="container">{% block content %} {% endblock %}</main>
 

@@ -28,6 +28,12 @@ h5 {
     background: url(../images/home-page-image.jpg) center center / cover no-repeat;
 }
 
+/* Flashes */
+
+.flashes h5 {
+    margin: 0;
+}
+
 /* Welcome box */
 
 .welcome-box {
