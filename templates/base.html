@@ -27,7 +27,7 @@
                     <li><a href="#">Add Gig</a></li>
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
-                    <li><a href="#">Log Out</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 </ul>
             </div>
         </nav>
@@ -38,7 +38,7 @@
             <li><a href="#">Add Gig</a></li>
             <li><a href="{{ url_for('login') }}">Login</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
 
         {% block home %} {% endblock %}

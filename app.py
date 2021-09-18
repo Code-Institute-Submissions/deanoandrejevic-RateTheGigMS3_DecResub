@@ -28,7 +28,7 @@ def all_gigs():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        existing_user = mongo.db.users.find.one(
+        existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
@@ -76,6 +76,13 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("all_gigs"))
 
 
 if __name__ == "__main__":
