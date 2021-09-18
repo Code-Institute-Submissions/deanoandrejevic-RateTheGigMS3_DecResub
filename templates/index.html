@@ -5,12 +5,12 @@
 <div id="home-div" class="row home-img">
     <div class="col s12">
         <div class="col m4 offset-m4 welcome-box center-align">
-            <h5 class="orange-text text-darken-2">Welcome to Rate The Gig!</h5>
+            <h4 class="orange-text text-darken-2">Welcome to Rate The Gig!</h4>
             <p class="white-text">Your one stop shop for all gig reviews</p>
-            <br>
             <p class="white-text">To add reviews for yourself sign up today!</p>
-            <a class="waves-effect waves-light btn-small"><i class="material-icons left">cloud</i>button</a>
-            
+            <a href="{{ url_for('register') }}" class="waves-effect waves-light btn-large"><i
+                    class="fas fa-user-plus"></i> Sign Up</a>
+
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
 
 {% block content %}
 
-<h3 class="center-align">Everyones gigs!</h3>
+<h3 class="center-align">Gig Reviews!</h3>
 
 <div class="row">
     {% for gig in gigs %}
@@ -30,11 +30,11 @@
                 <span class="card-title orange-text text-darken-2">
                     <h5>{{ gig.band_name }}</h5>
                 </span>
-                <p><strong>Gig date:</strong> {{ gig.when }}</p>
-                <p><strong>Venue:</strong> {{ gig.where }}</p>
-                <p><strong>Review:</strong> {{ gig.desciption }}</p>
-                <p><strong>Rating:</strong> {{ gig.rating }}/10</p>
-                <p><i>Reviewed By: {{ gig.created_by }}</i></p>
+                <p class="card-text"><strong>Gig date:</strong> {{ gig.when }}</p>
+                <p class="card-text"><strong>Venue:</strong> {{ gig.where }}</p>
+                <p class="card-text"><strong>Review:</strong> {{ gig.desciption }}</p>
+                <p class="card-text"><strong>Rating:</strong> {{ gig.rating }}/10</p>
+                <p class="card-text"><i>Reviewed By: {{ gig.created_by }}</i></p>
             </div>
             <div class="card-action orange-text text-darken-2">
                 <a href="#">Edit</a>

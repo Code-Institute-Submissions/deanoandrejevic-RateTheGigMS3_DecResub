@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Shadows+Into+Light&display=swap');
+
+/* Universal Styling */
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Shadows Into Light', cursive;
+}
+
 /* Nav bar  */
 
 .brand-nav {
@@ -15,18 +31,30 @@
 /* Welcome box */
 
 .welcome-box {
-    height: 250px;
+    height: 300px;
     margin-top: 150px;
     background-color: rgba(38, 44, 24, 0.9);
 }
 
-.welcome-box br {
-    width: 90%;
-    border: 1px solid
+.welcome-box p {
+    font-size: large;
+    margin: 25px 0 25px 0;
+}
+
+.welcome-box h5 {
+    margin-bottom: 15px;
+}
+
+.welcome-box a {
+    margin: 10px; 
 }
 
 /* Gig Card Colors */
 
 .card-color {
     background-color: #262C18;
+}
+
+.card-text {
+    margin-bottom: 10px !important;
 }
