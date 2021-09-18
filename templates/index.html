@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block home %}
+
+<div id="home-div" class="row home-img">
+    <div class="col s12">
+        <div class="col m4 offset-m4 welcome-box center-align">
+            <h5 class="orange-text text-darken-2">Welcome to Rate The Gig!</h5>
+            <p class="white-text">Your one stop shop for all gig reviews</p>
+            <br>
+            <p class="white-text">To add reviews for yourself sign up today!</p>
+            <a class="waves-effect waves-light btn-small"><i class="material-icons left">cloud</i>button</a>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<h3 class="center-align">Everyones gigs!</h3>
+
+<div class="row">
+    {% for gig in gigs %}
+    {% if gig.category_name|lower == "past"|lower %}
+    <div class="col s12 m3">
+        <div class="card card-color darken-1">
+            <div class="card-content white-text">
+                <span class="card-title orange-text text-darken-2">
+                    <h5>{{ gig.band_name }}</h5>
+                </span>
+                <p><strong>Gig date:</strong> {{ gig.when }}</p>
+                <p><strong>Venue:</strong> {{ gig.where }}</p>
+                <p><strong>Review:</strong> {{ gig.desciption }}</p>
+                <p><strong>Rating:</strong> {{ gig.rating }}/10</p>
+                <p><i>Reviewed By: {{ gig.created_by }}</i></p>
+            </div>
+            <div class="card-action orange-text text-darken-2">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -22,7 +22,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
+@app.route("/")
+@app.route("/all_gigs")
+def all_gigs():
+    gigs = list(mongo.db.gigs.find())
+    return render_template("index.html", gigs=gigs)
 
 
 if __name__ == "__main__":

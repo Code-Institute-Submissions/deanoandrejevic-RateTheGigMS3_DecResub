@@ -1,0 +1,32 @@
+/* Nav bar  */
+
+.brand-nav {
+    margin-left: 20px;
+}
+
+/* Home Page Image */
+
+.home-img {
+    height: 80vh;
+    width: 100%;
+    background: url(../images/home-page-image.jpg) center center / cover no-repeat;
+}
+
+/* Welcome box */
+
+.welcome-box {
+    height: 250px;
+    margin-top: 150px;
+    background-color: rgba(38, 44, 24, 0.9);
+}
+
+.welcome-box br {
+    width: 90%;
+    border: 1px solid
+}
+
+/* Gig Card Colors */
+
+.card-color {
+    background-color: #262C18;
+}
