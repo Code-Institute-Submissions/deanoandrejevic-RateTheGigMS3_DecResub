@@ -2,6 +2,37 @@
 
 {% block content %}
 
+<h2 class="center-align">Log In</h2>
+<p class="center-align">Go on, log in to start reviewing the gigs you've been too!</p>
 
+<div class="row">
+    <form class="col s12" method="POST" action="{{ url_for('login') }}">
+        <div class="card-panel">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-cog prefix"></i>
+                    <input id="username" name="username" type="text" minlength="6" maxlength="20"
+                        pattern="^[a-zA-Z0-9]{8}$" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-user-lock prefix"></i>
+                    <input id="password" name="password" type="password" minlength="8" maxlength="20"
+                        pattern="^[a-zA-Z0-9]{8,20}$" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="col s6 offset-s3 btn-large">
+                    Sign Up <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </div>
+
+        </div>
+    </form>
+    <p>Already Registed? <a href="{{ url_for('login') }}">Login here!</a></p>
+</div>
 
 {% endblock %}
