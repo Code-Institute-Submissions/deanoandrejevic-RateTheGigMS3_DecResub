@@ -78,6 +78,26 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/add_gig", methods=["GET", "POST"])
+def add_gig():
+    if request.method == "POST":
+        gig = {
+            "category_name": request.form.get("category_name"),
+            "band_name": request.form.get("band_name"),
+            "where": request.form.get("where"),
+            "when": request.form.get("when"),
+            "description": request.form.get("review"),
+            "rating": request.form.get("rating"),
+            "created_by": session["user"]
+        }
+        mongo.db.gigs.insert_one(gig)
+        flash("Gig added Successfully!")
+        return redirect(url_for("all_gigs"))
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_gig.html", categories=categories)
+
+
 @app.route("/logout")
 def logout():
     flash("You have been logged out")

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="center-align">Add Gig Review!</h3>
+<p class="center-align">Add gigs you've been too or gigs you're going too!</p>
+
+<div class="row card-panel">
+  <form class="col s12" method="POST" action="{{ url_for('add_gig') }}">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-folder-open prefix"></i>
+        <select name="category_name" id="category_name" class="validate" required>
+          <option value="" disabled selected>Choose Category</option>
+          {% for category in categories %}
+          <option value="{{ category.category_name }}">
+            {{- category.category_name -}}
+          </option>
+          {% endfor %}
+        </select>
+        <label for="category_name">Happened or Upcoming?</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="band_name" name="band_name" type="text" class="validate">
+        <label for="band_name">Band/Artist Name?</label>
+      </div>
+      <div class="input-field col s12">
+        <input id="where" id="where" type="text" class="validate">
+        <label for="where">Where was Venue?</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="when" name="when" type="text" class="datepicker validate">
+        <label for="name">When was the Gig?</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="review" name="review" maxlength="300" class="materialize-textarea"></textarea>
+        <label for="review">Review of the Gig</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-folder-open prefix"></i>
+        <select name="rating" id="rating" class="validate" required>
+          <option value="" disabled selected>Rating out of 10</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <label for="rating">Rating out of 10?</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <div class="input-field inline">
+          <button class="btn-large" type="submit" name="submit">
+            Submit Gig
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
