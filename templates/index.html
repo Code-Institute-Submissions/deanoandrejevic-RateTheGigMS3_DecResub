@@ -3,6 +3,15 @@
 {% block home %}
 
 <div id="home-div" class="row home-img">
+    {% if session.user %}
+    <div class="col s12">
+        <div class="col m4 offset-m4 welcome-box center-align">
+            <h4 class="orange-text text-darken-2">Welcome back {{ session.user }}</h4>
+            <p class="white-text">All the reviews are down below ready for you!</p>
+            <p class="white-text">You can search for your favourite bands to see how other people found them too!</p>
+        </div>
+    </div>
+    {% else %}
     <div class="col s12">
         <div class="col m4 offset-m4 welcome-box center-align">
             <h4 class="orange-text text-darken-2">Welcome to Rate The Gig!</h4>
@@ -10,9 +19,10 @@
             <p class="white-text">To add reviews for yourself sign up today!</p>
             <a href="{{ url_for('register') }}" class="waves-effect waves-light btn-large"><i
                     class="fas fa-user-plus"></i> Sign Up</a>
-
         </div>
     </div>
+    {% endif %}
+
 </div>
 
 {% endblock %}
