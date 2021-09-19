@@ -25,6 +25,13 @@ def all_gigs():
     return render_template("index.html", gigs=gigs)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    search = request.form.get("search")
+    gigs = list(mongo.db.gigs.find({"$text": {"$search": search}}))
+    return render_template("all_gigs.html", gigs=gigs)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -96,6 +103,26 @@ def add_gig():
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_gig.html", categories=categories)
+
+
+@app.route("/edit_gig/<gig_id>", methods=["GET", "POST"])
+def edit_gig(gig_id):
+    if request.method == "POST":
+        gig_edit = {
+            "category_name": request.form.get("category_name"),
+            "band_name": request.form.get("band_name"),
+            "where": request.form.get("where"),
+            "when": request.form.get("when"),
+            "description": request.form.get("review"),
+            "rating": request.form.get("rating"),
+            "created_by": session["user"]
+        }
+        mongo.db.gigs.update({"_id": ObjectId(gig_id)}, gig_edit)
+        flash("You have successfully updated your gig!")
+
+    gig = mongo.db.gigs.find_one({"_id": ObjectId(gig_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_gig.html", gig=gig, categories=categories)
 
 
 @app.route("/logout")

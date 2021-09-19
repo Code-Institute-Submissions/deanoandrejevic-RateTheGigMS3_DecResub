@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $(".sidenav").sidenav({edge: "right"});
+    $(".sidenav").sidenav({edge: "right",
+                            draggable: true});
     $(".collapsible").collapsible();
     $(".tooltipped").tooltip();
     $("select").formSelect();

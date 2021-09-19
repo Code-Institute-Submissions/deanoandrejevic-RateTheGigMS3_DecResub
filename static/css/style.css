@@ -64,3 +64,15 @@ h5 {
 .card-text {
     margin-bottom: 10px !important;
 }
+
+.review-cards {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* search bar */
+
+.search-bar {
+    background-color: #262C18;
+    margin-bottom: 50px;
+}
