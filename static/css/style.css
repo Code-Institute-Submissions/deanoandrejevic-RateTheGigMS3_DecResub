@@ -55,6 +55,12 @@ h5 {
     margin: 10px; 
 }
 
+/* Modal Box */
+
+.modal-box {
+    background-color: #262C18;
+}
+
 /* Gig Card Colors */
 
 .card-color {
