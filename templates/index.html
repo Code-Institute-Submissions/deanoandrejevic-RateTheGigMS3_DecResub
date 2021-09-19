@@ -17,7 +17,7 @@
             <h4 class="orange-text text-darken-2">Welcome to Rate The Gig!</h4>
             <p class="white-text">Your one stop shop for all gig reviews</p>
             <p class="white-text">To add reviews for yourself sign up today!</p>
-            <a href="{{ url_for('register') }}" class="waves-effect waves-light btn-large"><i
+            <a href="{{ url_for('register') }}" class="orange btn-large"><i
                     class="fas fa-user-plus"></i> Sign Up</a>
         </div>
     </div>
@@ -66,10 +66,10 @@
                 <p class="card-text"><strong>Rating:</strong> {{ gig.rating }}/10</p>
                 <p class="card-text"><i>Reviewed By: {{ gig.created_by }}</i></p>
             </div>
-            {% if session.user|lower() == gig.created_by|lower() %}
+            {% if session.user|lower == gig.created_by|lower %}
             <div class="card-action orange-text text-darken-2">
                 <a href="{{ url_for('edit_gig', gig_id=gig._id) }}">Edit</a>
-                <a href="#">Delete</a>
+                <a href="{{ url_for('delete', gig_id=gig._id) }}">Delete</a>
             </div>
             {% endif %}
         </div>

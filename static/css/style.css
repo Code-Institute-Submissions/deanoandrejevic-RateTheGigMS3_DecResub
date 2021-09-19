@@ -76,3 +76,15 @@ h5 {
     background-color: #262C18;
     margin-bottom: 50px;
 }
+
+/* Profile Page */
+
+.profile-img {
+    height: 80vh;
+    width: 100%;
+    background: url(../images/profile-image.jpg) center center / cover no-repeat;
+}
+
+.add-one {
+    font-size: large;
+}

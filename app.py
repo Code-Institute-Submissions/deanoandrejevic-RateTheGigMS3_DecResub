@@ -25,11 +25,17 @@ def all_gigs():
     return render_template("index.html", gigs=gigs)
 
 
+@app.route("/profile")
+def profile():
+    gigs = list(mongo.db.gigs.find())
+    return render_template("profile.html", gigs=gigs)
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     search = request.form.get("search")
-    gigs = list(mongo.db.gigs.find({"$text": {"$search": search}}))
-    return render_template("all_gigs.html", gigs=gigs)
+    gigs = list(mongo.db.tasks.find({"$text": {"$search": search}}))
+    return render_template("tasks.html", gigs=gigs)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -52,7 +58,7 @@ def register():
 
         session["user"] = request.form.get("username").lower()
         flash("You have registered successfully!")
-        return redirect(url_for("all_gigs", username=session["user"]))
+        return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
 
@@ -68,10 +74,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("username")))
                         return redirect(url_for(
-                            "all_gigs", username=session["user"]))
+                            "profile", username=session["user"]))
             else:
                 # invalid password
                 flash("Incorrect Username and/or Password")
@@ -119,10 +123,18 @@ def edit_gig(gig_id):
         }
         mongo.db.gigs.update({"_id": ObjectId(gig_id)}, gig_edit)
         flash("You have successfully updated your gig!")
+        return redirect(url_for("profile"))
 
     gig = mongo.db.gigs.find_one({"_id": ObjectId(gig_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_gig.html", gig=gig, categories=categories)
+
+
+@app.route("/delete/<gig_id>")
+def delete(gig_id):
+    mongo.db.gigs.remove({"_id": ObjectId(gig_id)})
+    flash("You have deleted the gig successfully!")
+    return redirect(url_for("profile"))
 
 
 @app.route("/logout")
