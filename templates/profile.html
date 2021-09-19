@@ -35,7 +35,7 @@
     {% for gig in gigs %}
     {% if session.user == gig.created_by %}
     <div class="col s12 m3">
-        <div class="card card-color">
+        <div class="card medium card-color">
             <div class="card-content white-text">
                 <span class="card-title orange-text text-darken-2">
                     <h5 class="review-cards">{{ gig.band_name }}</h5>
@@ -63,7 +63,7 @@
     </div>
     {% elif session.user|lower == "__admin__"|lower %}
     <div class="col s12 m3">
-        <div class="card card-color">
+        <div class="card medium card-color">
             <div class="card-content white-text">
                 <span class="card-title orange-text text-darken-2">
                     <h5 class="review-cards">{{ gig.band_name }}</h5>
