@@ -19,7 +19,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
 @app.route("/")
 @app.route("/all_gigs")
 def all_gigs():
@@ -106,7 +105,7 @@ def login():
                 # invalid password
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-      
+
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
