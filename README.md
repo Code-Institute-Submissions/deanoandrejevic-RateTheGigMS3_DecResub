@@ -63,8 +63,8 @@ The structure of project is almost excatly as intended. I have an easy to unders
 ## Wireframes
 
  
-- [Home_Page]()
-- [Profile_Page]()
+- ![Home_Page](/static/readme/Home-Page-Wireframe.png)
+
 
 # Testing
 
@@ -94,10 +94,6 @@ I have tested on the following devices
 
 No Reported Issues on these devices
 
-## Lighthouse Test
-
-
-
 ## Testing Functions
 
 - *all_gigs()* : This function displays all review cards within the index page. Works fine!
@@ -117,6 +113,10 @@ No Reported Issues on these devices
 - *delete()* : This function allows the user to delete review cards that they have created. Works fine!
 
 - *logout()* : This function allows the user to log out. It does this by deleting the session cookie, which then in turn allows the user to sign in again. Works fine!
+
+### Bugs
+
+I am currently experiencing a bug where the wrong review card is being deleted. If I select the delete button on one of the cards it will always delete the first review card on the list. The issue started when I added a confirmation Modal to the app. I would assume that this is the issue, but I want to iron it out so I can keep the Modal and it delete the correct review card.
 
 # Technologies Used
 
