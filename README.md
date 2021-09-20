@@ -57,8 +57,6 @@ The structure of project is almost excatly as intended. I have an easy to unders
 
 1. I would like to add the ability to search for gig cards, whether that be by artist name, venue etc.. This feature is currently a work in progress, as I cant seem to get it too work correctly. The search feature and html page is currently in the gitignore file so I can't deploy by accident.
 2. I would like to add a feature that sends out an email once the user has signed up. I have installed Flask_Mail where I did try to implement said email. I think it started to work as I was getting sign in security notifications from google, but it was never sending the email. This is something that can be added in later as my knowledge expands.
-3. 
-
 
 
 ## Wireframes
@@ -66,3 +64,32 @@ The structure of project is almost excatly as intended. I have an easy to unders
 __Home Page__ [Home_Page]()
 __Profile Page__ [Profile_Page]()
 
+# Technologies Used
+
+### Languages
+
+- [HTML](https://en.wikipedia.org/wiki/HTML5)
+- [CCS](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+### Libaries, Frameworks
+
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+- [MongoDB](https://www.mongodb.com/)
+- [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)
+- [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
+- [Materialize CSS](https://materializecss.com/)
+- [GitHub](https://github.com/)
+- [Heroku](https://www.heroku.com/)
+- [Google Fonts](https://fonts.google.com/) Staatliches and Open Sans fonts used.
+- [Balsamiq](https://balsamiq.com/) Balsamiq was used to make my wireframes and general design of my website.
+
+### Version Control
+- [GitHub](https://github.com/) GitHub was used for storage of code and deployment of page via GitHub Pages.
+- [GitPod](https://www.gitpod.io/) GitPod was used as the primary editor and also to push and commit my code.
+
+### Other:
+- [Google Dev Tools](https://developer.chrome.com/docs/devtools/) Google Chrome Dev Tools was a huge help in discovering bugs and figuring out the solution before actually commiting it to my own code.
+
+- [Code Institute](https://codeinstitute.net/) The Code Institute is where all my current coding knowledge has come from.
