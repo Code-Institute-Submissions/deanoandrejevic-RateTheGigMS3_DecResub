@@ -51,7 +51,7 @@ The structure of project is almost excatly as intended. I have an easy to unders
 7. A user can navigate to their profile page where they can view they can veiw all their review cards and only their review cards.
 8. When a user is signed in they can then add gig cards by filling out a form. Within this form they can select, Attended or Upcoming. If they select "upcoming" only that user can view that review card.
 9. The user can also edit their own review cards. When they have attended a gig they change the Upcoming category to Attended which will make it veiwable to all users, regardless of whether they are signed in or not.
-10. I have added an Admin user too which has master access over everything and can delete, edit and add gig cards regardless of who created review cards.
+10. I have added an Admin user too which has master access over everything and can delete, edit and add gig cards regardless of who created review cards. You can log in to said account using. Username: `__admin__` Password: `__admin__`
 
 ### To be implemented
 
@@ -95,6 +95,28 @@ I have tested on the following devices
 No Reported Issues on these devices
 
 ## Lighthouse Test
+
+
+
+## Testing Functions
+
+- *all_gigs()* : This function displays all review cards within the index page. Works fine!
+
+- *profile()* : This function displays all review cards within the profile page. Works fine!
+
+- *search()* : This function allows users to search for review cards within the home page. Still a work in progress!
+
+- *register()* : This function allows the user to register an account. Works fine!
+
+- *login()* : This function allows the user to login to their account. Works fine!
+
+- *add_gig()* : This function allows the user to add review cards for everyone to see. Works fine!
+
+- *edit_gig()* : This function allows the user to edit gig review cards that they have created. This also allows them to make viewable to everyone or just themselves. Works fine!
+
+- *delete()* : This function allows the user to delete review cards that they have created. Works fine!
+
+- *logout()* : This function allows the user to log out. It does this by deleting the session cookie, which then in turn allows the user to sign in again. Works fine!
 
 # Technologies Used
 
@@ -143,4 +165,27 @@ This project was deployed to Heroku with the following steps:
 10. Go to the app Overview page and when the build is finished, click 'Open App'
 
 # Credits
+
+## Images
+- The home image used was from [Unsplash](https://unsplash.com/photos/NMx_9N2QC5o)
+- The profile image used was from [Unsplash](https://unsplash.com/photos/RAZQiZOX3mU)
+
+## Code
+- The Python code was heavily inspired by the Task Manager Mini Project done by the Code Institue, I have tweaked it and added stuff as needed.
+- [Flask_Mail](https://pythonhosted.org/Flask-Mail/) Is a technology that I wanted to implement into my code but I couldn't get it done in the end, but it helped me massively in my understanding of Python code.
+
+## Acknowledgements
+I would like to thank a bunch of friends and family
+- Megan Cox
+- Ben Holloway
+- Jack Andersen
+- Will Massey
+- Callum Guy
+- Luke Munsch
+- Ella Fitzgerald
+- Darren Stevenson (Step-Dad)
+- Daniella Stevenson (Mum)
+- These guys all helped me in finding issues in my website and breaking my site to help flush out bugs in my code.
+
+I would also like to thank the Code Insititue for helping me expand my knowledge on Python coding and further practices.
 
