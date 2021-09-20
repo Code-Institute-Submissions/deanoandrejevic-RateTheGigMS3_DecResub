@@ -68,7 +68,33 @@ The structure of project is almost excatly as intended. I have an easy to unders
 
 # Testing
 
+HTML Validator
+- ![HTML]()
 
+CSS Validator
+- ![CSS](/static/readme/MS3-CSS-Validator.PNG)
+
+Python PEP 8 Compliance
+- ![Python_PEP8](/static/readme/PEP8-Compliance.PNG)
+
+## Device Testing
+I have tested on the following devices
+
+- Windows Desktop with a 4k, 2k and 1080p display
+- Google Pixel 4 XL
+- Samsung Galaxy S20 Note Ultra
+- Samsung Galaxy S21 Ultra
+- iPhone 12 Pro
+- iPhone 12 Pro Max
+- iPhone 11 Pro
+- Google Chromebook
+- Lenovo Tab P11
+- Moto G 5G Plus
+- Amazon Fire Tablet 10"
+
+No Reported Issues on these devices
+
+## Lighthouse Test
 
 # Technologies Used
 
