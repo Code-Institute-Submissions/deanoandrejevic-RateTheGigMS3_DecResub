@@ -18,9 +18,11 @@
 
 <body>
     <header>
+        <!-- Nav bar for desktop -->
         <nav class="nav-extended">
             <div class="nav-wrapper black">
-                <a href="{{ url_for('all_gigs') }}" class="brand-logo brand-nav"><i class="brand-nav far fa-hand-rock"></i>Rate
+                <a href="{{ url_for('all_gigs') }}" class="brand-logo brand-nav"><i
+                        class="brand-nav far fa-hand-rock"></i>Rate
                     The Gig!</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
@@ -38,6 +40,7 @@
             </div>
         </nav>
 
+        <!-- Nav bar for mobile -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('all_gigs') }}">Home</a></li>
             {% if session.user %}
@@ -48,8 +51,8 @@
             <li><a href="{{ url_for('login') }}">Login</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
-
         </ul>
+        <!-- I have added Jinja templating so the that when users are logged in certain buttons appear and disappear -->
     </header>
     <section>
         <!-- Flash Messages! -->

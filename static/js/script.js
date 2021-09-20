@@ -1,3 +1,5 @@
+// This function is for materialize. This the mobile nav, modal, form select and datepicker to function correctly
+
 $(document).ready(function () {
     $(".sidenav").sidenav({
         edge: "right",

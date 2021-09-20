@@ -23,18 +23,31 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/all_gigs")
 def all_gigs():
+    """
+    Renders home page review cards from DB
+    """
     gigs = list(mongo.db.gigs.find())
     return render_template("index.html", gigs=gigs)
 
 
 @app.route("/profile")
 def profile():
+    """
+    Renders profile page review cards from DB
+    """
     gigs = list(mongo.db.gigs.find())
     return render_template("profile.html", gigs=gigs)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    This function is meant to allow the user to search for
+    specific artist or gig. I can't however get it to work
+    correctly. I will keep the function in while I work on
+    it. I have added the search.html to gitignore file until
+    it is ready to deploy.
+    """
     query = request.form.get("search")
     gigs = list(mongo.db.gigs.find({"$text": {"$search": query}}))
     return render_template("index.html", gigs=gigs)
@@ -42,6 +55,12 @@ def search():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    function allows the user to sign up to the website with a
+    first and last name, username and password. They will get
+    a prompt when registration is successful and will be
+    redirected to their profile page.
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -67,6 +86,11 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    User can log in using credentials they have already submitted to the
+    database. They will be redirected to their profile page once
+    logged in
+    """
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -93,6 +117,10 @@ def login():
 
 @app.route("/add_gig", methods=["GET", "POST"])
 def add_gig():
+    """
+    This function is allows the user to add a gig to the database, they will
+    also get a prompt when the gig is added successfully
+    """
     if request.method == "POST":
         gig = {
             "category_name": request.form.get("category_name"),
@@ -113,6 +141,10 @@ def add_gig():
 
 @app.route("/edit_gig/<gig_id>", methods=["GET", "POST"])
 def edit_gig(gig_id):
+    """
+    Function allows user to edit gigs with the values they
+    have already submitted to the database
+    """
     if request.method == "POST":
         gig_edit = {
             "category_name": request.form.get("category_name"),
@@ -134,6 +166,9 @@ def edit_gig(gig_id):
 
 @app.route("/delete/<gig_id>")
 def delete(gig_id):
+    """
+    Allows user to delete gigs from database
+    """
     mongo.db.gigs.remove({"_id": ObjectId(gig_id)})
     flash("You have deleted the gig successfully!")
     return redirect(url_for("profile"))
@@ -141,6 +176,11 @@ def delete(gig_id):
 
 @app.route("/logout")
 def logout():
+    """
+    Allows user to logout and delete session cookie.
+    This way other users can sign in to access their
+    gigs
+    """
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("all_gigs"))
@@ -149,4 +189,4 @@ def logout():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

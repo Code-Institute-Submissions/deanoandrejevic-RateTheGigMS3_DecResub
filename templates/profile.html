@@ -2,6 +2,7 @@
 
 {% block home %}
 
+<!-- This Div welcomes the user and allows to add a new gig in a more visible location -->
 <div id="profile-div" class="row profile-img">
     {% if session.user %}
     <div class="col s12">
@@ -29,6 +30,7 @@
 <div class="row">
     {% for gig in gigs %}
     {% if session.user == gig.created_by|lower %}
+    <!-- Profile review cards for logged in users -->
     <div class="col s12 m3">
         <div class="card medium card-color">
             <div class="card-content white-text">
@@ -57,6 +59,7 @@
         </div>
     </div>
     {% elif session.user|lower == "__admin__"|lower %}
+    <!-- Profile review cards for admin priviliges -->
     <div class="col s12 m3">
         <div class="card medium card-color">
             <div class="card-content white-text">

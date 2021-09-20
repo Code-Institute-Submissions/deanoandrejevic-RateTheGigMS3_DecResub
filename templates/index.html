@@ -2,6 +2,7 @@
 
 {% block home %}
 
+<!-- Welcome Div -->
 <div id="home-div" class="row home-img">
     {% if session.user %}
     <div class="col s12">
@@ -30,7 +31,7 @@
 
 <h3 class="center-align">Gig Reviews!</h3>
 
-
+<!-- Gig Reviews are stored here. Users who are not logged in cannot edit nor delete reviews -->
 <div class="row">
     {% for gig in gigs %}
     {% if gig.category_name|lower == "past"|lower %}
@@ -46,6 +47,7 @@
                 <p class="card-text"><strong>Rating:</strong> {{ gig.rating }}/10</p>
                 <p class="card-text"><i>Reviewed By: {{ gig.created_by }}</i></p>
             </div>
+            <!-- Adding edit and delete buttons back in if user is logged in. -->
             {% if session.user|lower == gig.created_by|lower %}
             <div class="card-action orange-text text-darken-2">
                 <a href="{{ url_for('edit_gig', gig_id=gig._id) }}">Edit</a>
