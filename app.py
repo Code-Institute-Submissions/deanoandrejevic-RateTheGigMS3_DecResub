@@ -105,7 +105,7 @@ def add_gig():
         }
         mongo.db.gigs.insert_one(gig)
         flash("Gig added Successfully!")
-        return redirect(url_for("all_gigs"))
+        return redirect(url_for("profile.html"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_gig.html", categories=categories)

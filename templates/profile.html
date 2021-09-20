@@ -10,6 +10,11 @@
             <p class="white-text">All your upcoming and previous gig reviews are stored here!</p>
             <p class="white-text">All upcoming gigs are not visible to everyone until you have attended and reviewed the
                 event.</p>
+            <h5 class="orange-text text-darken-2">
+                Want to add a new gig?
+            </h5>
+            <a href="{{ url_for('add_gig') }}" class="orange btn-large"><i class="fas fa-folder-plus"></i> Add
+                Review!</a>
         </div>
     </div>
 </div>
@@ -21,19 +26,9 @@
 
 <h3 class="center-align">Your Reviews!</h3>
 
-{% if gigs.created_by|length > 0  %}
-<div class="row">
-    <div class="col s12 center-align">
-        <p class="add-one">
-            Oops it looks like you don't have any gigs yet! Care to add one?
-        </p>
-        <a href="{{ url_for('add_gig') }}" class="orange btn-large"><i class="fas fa-folder-plus"></i> Add Review!</a>
-    </div>
-</div>
-{% else %}
 <div class="row">
     {% for gig in gigs %}
-    {% if session.user == gig.created_by %}
+    {% if session.user == gig.created_by|lower %}
     <div class="col s12 m3">
         <div class="card medium card-color">
             <div class="card-content white-text">
@@ -92,6 +87,5 @@
     {% endif %}
     {% endfor %}
 </div>
-{% endif %}
 
 {% endblock %}
