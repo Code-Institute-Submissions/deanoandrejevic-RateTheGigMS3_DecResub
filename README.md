@@ -59,10 +59,16 @@ The structure of project is almost excatly as intended. I have an easy to unders
 2. I would like to add a feature that sends out an email once the user has signed up. I have installed Flask_Mail where I did try to implement said email. I think it started to work as I was getting sign in security notifications from google, but it was never sending the email. This is something that can be added in later as my knowledge expands.
 
 
+
 ## Wireframes
 
-__Home Page__ [Home_Page]()
-__Profile Page__ [Profile_Page]()
+ 
+- [Home_Page]()
+- [Profile_Page]()
+
+# Testing
+
+
 
 # Technologies Used
 
@@ -93,3 +99,22 @@ __Profile Page__ [Profile_Page]()
 - [Google Dev Tools](https://developer.chrome.com/docs/devtools/) Google Chrome Dev Tools was a huge help in discovering bugs and figuring out the solution before actually commiting it to my own code.
 
 - [Code Institute](https://codeinstitute.net/) The Code Institute is where all my current coding knowledge has come from.
+
+# Deployment
+
+This project was deployed to Heroku with the following steps:
+
+1. Ensure your app has debug mode set to False when deploying.
+2. Add a file called `Procfile` with no extension to your project directory and add `web: python app.py`
+3. Heroku can install dependencies from a requirements.txt or a Pipfile
+   - To create a requirements.txt run `pip freeze > requirements.txt`
+4. Create an account on Heroku and create a new app.
+5. In your app dashboard, in the deploy section, select 'Connect to GitHub'
+6. Select the GitHub repository that contains your project.
+7. Select Automatic deploys and choose your desired branch.
+8. Go to the app settings on Heroku and click 'Reveal Config Vars'
+9. Add the required keys as they are in your local env.py (i.e IP, PORT, SECRET_KEY, MONGO_URI, MONGO_DBNAME)
+10. Go to the app Overview page and when the build is finished, click 'Open App'
+
+# Credits
+
