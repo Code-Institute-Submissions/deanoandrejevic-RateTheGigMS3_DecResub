@@ -20,6 +20,10 @@ h5 {
     margin-left: 20px;
 }
 
+.brand-logo {
+    font-size: medium;
+}
+
 /* Home Page Image */
 
 .home-img {
@@ -37,7 +41,6 @@ h5 {
 /* Welcome box */
 
 .welcome-box {
-    height: 300px;
     margin-top: 150px;
     background-color: rgba(38, 44, 24, 0.9);
 }
@@ -94,3 +97,4 @@ h5 {
 .add-one {
     font-size: large;
 }
+
