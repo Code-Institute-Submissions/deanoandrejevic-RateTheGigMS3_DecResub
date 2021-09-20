@@ -50,6 +50,7 @@
 
 <h3 class="center-align">Gig Reviews!</h3>
 
+{% if gigs|length > 0 %}
 <div class="row">
     {% for gig in gigs %}
     {% if gig.category_name|lower == "past"|lower %}
@@ -99,5 +100,10 @@
     {% endif %}
     {% endfor %}
 </div>
+{% else %}
+<h3 class="center-align">
+    No Results Found! Try again!
+</h3>
+{% endif %}
 
 {% endblock %}

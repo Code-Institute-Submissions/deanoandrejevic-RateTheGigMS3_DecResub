@@ -35,10 +35,9 @@ def profile():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    if request.method == "POST":
-        search = request.form.get("search")
-        gigs = list(mongo.db.gigs.find({"$text": {"$search": search}}))
-        return render_template("tasks.html", gigs=gigs)
+    query = request.form.get("search")
+    gigs = list(mongo.db.gigs.find({"$text": {"$search": query}}))
+    return render_template("index.html", gigs=gigs)
 
 
 @app.route("/register", methods=["GET", "POST"])
