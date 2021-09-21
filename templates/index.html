@@ -34,7 +34,7 @@
 <!-- Gig Reviews are stored here. Users who are not logged in cannot edit nor delete reviews -->
 <div class="row">
     {% for gig in gigs %}
-    {% if gig.category_name|lower == "past"|lower %}
+    {% if gig.category_name|lower == "attended"|lower %}
     <div class="col s12 m3">
         <div class="card small card-color darken-1">
             <div class="card-content white-text">
