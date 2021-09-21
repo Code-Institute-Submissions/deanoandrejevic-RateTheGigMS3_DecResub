@@ -163,12 +163,12 @@ def edit_gig(gig_id):
     return render_template("edit_gig.html", gig=gig, categories=categories)
 
 
-@app.route("/delete/<gig_id>")
-def delete(gig_id):
+@app.route("/delete/<gigs_id>")
+def delete(gigs_id):
     """
     Allows user to delete gigs from database
     """
-    mongo.db.gigs.remove({"_id": ObjectId(gig_id)})
+    mongo.db.gigs.remove({"_id": ObjectId(gigs_id)})
     flash("You have deleted the gig successfully!")
     return redirect(url_for("profile"))
 
@@ -188,4 +188,4 @@ def logout():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
