@@ -141,6 +141,9 @@ No Reported Issues on these devices
 **When I have done any of these tasks, I would like on screen feedback when they have been successfully.**
 - Once you have added, edited or deleted any of the reviews you be given on screen feedback which will tell you if any changes made have been successsful.
 
+**I would like to be able to log out after I am done.**
+- Like the first time user story. Once you are done and want to log out. You can do so by clicking the log out button in the top right. Once you are logged out a message will appear to confirm it has been successful!
+
 ### Bugs
 
 I am currently experiencing a bug where the wrong review card is being deleted. If I select the delete button on one of the cards it will always delete the first review card on the list. The issue started when I added a confirmation Modal to the app. I would assume that this is the issue, but I want to iron it out, so I can keep the Modal, and it deletes the correct review card.
