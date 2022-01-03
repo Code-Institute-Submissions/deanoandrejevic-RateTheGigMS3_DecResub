@@ -39,9 +39,15 @@
                 </div>
                 <p class="card-text"><strong>Gig date:</strong> {{ gig.when }}</p>
                 <p class="card-text"><strong>Venue:</strong> {{ gig.where }}</p>
+                {% if gig.rating == None %}
+                {% else %}
                 <p class="card-text"><strong>Review:</strong> {{ gig.description }}</p>
                 <p class="card-text"><strong>Rating:</strong> {{ gig.rating }}/10</p>
+                {% endif %}
                 <p class="card-text"><i>Reviewed By: {{ gig.created_by }}</i></p>
+                {% if gig.category_name|lower == "upcoming"|lower %}
+                <h2 class="orange-text text-darken-2">SCHEDULED EVENT</h2>
+                {% endif %}
             </div>
             <div class="card-action orange-text text-darken-2">
                 <a href="{{ url_for('edit_gig', gig_id=gig._id) }}">Edit</a>
