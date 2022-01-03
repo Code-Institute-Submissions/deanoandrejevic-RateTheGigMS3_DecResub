@@ -63,16 +63,30 @@ $(document).ready(function () {
 
 // This function is to display different options when a certain category is selected. CREDIT: https://jsfiddle.net/uftr0qa4/2/
 
-var category = document.querySelector("#category_name");
-var attendedTarget = document.getElementById("attendedSelected");
-var upcomingTarget = document.getElementById("upcomingSelected");
+var categoryEdit = document.querySelector("#category_name");
+var attendedTargetEdit = document.getElementById("attendedSelectedEdit");
+var upcomingTargetEdit = document.getElementById("upcomingSelectedEdit");
+
+category.addEventListener("change", function () {
+    if (categoryEdit.value == "Attended") {
+        attendedTargetEdit.style = "display: block;";
+        upcomingTargetEdit.style = "display: none;";
+    } else if (categoryEdit.value == "Upcoming") {
+        upcomingTargetEdit.style = "display: block;";
+        attendedTargetEdit.style = "display: none;";
+    }
+})
+
+var categoryAdd = document.querySelector("#category_name");
+var attendedTargetAdd = document.getElementById("attendedSelectedAdd");
+var upcomingTargetAdd = document.getElementById("upcomingSelectedAdd");
 
 category.addEventListener("change", function () {
     if (category.value == "Attended") {
-        attendedTarget.style = "display: block;";
-        upcomingTarget.style = "display: none;";
+        attendedTargetAdd.style = "display: block;";
+        upcomingTargetAdd.style = "display: none;";
     } else if (category.value == "Upcoming") {
-        upcomingTarget.style = "display: block;";
-        attendedTarget.style = "display: none;";
+        upcomingTargetAdd.style = "display: block;";
+        attendedTargetAdd.style = "display: none;";
     }
 })
