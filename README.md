@@ -21,10 +21,9 @@ You are thrown straight into the front page! Greeted by the hero image and a wel
 1. I would like to be able to visit the page and login using my previous username and password 
 2. Once I am in I want to be able to add reviews as I see fit.
 3. When I have added said reviews I want to be able view only my reviews under a dedicated page!
-4. When I am in my profile page, I would like to be able to add new gig reviews and edit reviews too.
-5. I would also like to delete my reviews too.
-6. When I have done any of these tasks, I would like on screen feedback when they have been successfully.
-7. I would like to be able to log out after I am done.
+4. When I am in my profile page, I would like to be able to add new gig reviews and edit reviews and delete reviews
+5. When I have done any of these tasks, I would like on screen feedback when they have been successfully.
+6. I would like to be able to log out after I am done.
 
 ## The Scope
 
@@ -112,6 +111,31 @@ No Reported Issues on these devices
 - *delete()* : This function allows the user to delete review cards that they have created. Works fine!
 
 - *logout()* : This function allows the user to log out. It does this by deleting the session cookie, which then in turn allows the user to sign in again. Works fine!
+
+## Testing User Stories
+
+### First Time Users
+**I want to be able to easily view gigs by either searching or scrolling through**
+- Though the functionality to search is not currently avalible in this build it is still easy to find gig reviews by just simply scrolling down. Search will be added in the future.
+
+**I want to be able to register an account with a username and password of my choosing**
+- Registering for an account is very easy and quick to do by just simply clicking the register button. You will then be prompted to type in your First Name, Last Name, Username and Password. You will also be prompted with a message to say whether your registration has been successful or not.
+
+**I would like to be able to log out after I am done.**
+- Logging out is very easy. Just click log out and a message will be displayed to say you have been logged out successfully.
+
+### Returning Users
+
+**I would like to be able to visit the page and login using my previous username and password**
+- Your data from the registration will be saved on external database and which you can use to log in with and access you account.
+
+**Once I am in I want to be able to add reviews as I see fit.**
+- Once you are registered you are then able to add new gigs either from the homepage, by clicking add gig, or from your account page by once again clicking add gig. You will then need to fill out the prompted information which will then be saved to a database.
+
+**When I have added said reviews I want to be able view only my reviews under a dedicated page**
+- Once you have added said gig review you are able to view it from your profile page and also the home page. Unlike the homepage however you account page will ONLY show your gigs.
+
+****
 
 ### Bugs
 
