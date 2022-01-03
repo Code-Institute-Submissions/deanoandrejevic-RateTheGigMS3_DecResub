@@ -83,12 +83,12 @@ h5 {
 
 /* Gig Card Display */
 
-#attendedSelected {
-    
+#attendedSelectedAdd {
+    display: none;
 }
 
-#upcomingSelected {
-    
+#upcomingSelectedAdd {
+    display: none;
 }
 
 /* search bar */

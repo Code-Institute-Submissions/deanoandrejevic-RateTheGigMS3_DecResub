@@ -11,7 +11,7 @@
       <!-- Category name -->
       <div class="input-field col s12">
         <i class="fas fa-folder-open prefix"></i>
-        <select name="category_name" id="category_name" class="validate" required>
+        <select name="category_name" id="category_name" class="validate">
           <option value="" disabled selected>Choose Category</option>
           {% for category in categories %}
           <option value="{{ category.category_name }}">
@@ -22,12 +22,12 @@
         <label for="category_name">Attended or Upcoming?</label>
       </div>
     </div>
-    <div id="upcomingSelectedEdit" class="d-none">
+    <div id="upcomingSelectedAdd">
       <div class="row">
         <!-- Artist Name -->
         <div class="input-field col s12">
           <i class="fas fa-music prefix"></i>
-          <input id="band_name" name="band_name" type="text" class="validate" required>
+          <input id="band_name" name="band_name" type="text" class="validate">
           <label for="band_name">Band/Artist Name?</label>
         </div>
       </div>
@@ -48,12 +48,12 @@
         </div>
       </div>
     </div>
-    <div id="attendedSelectedEdit" class="d-none">
+    <div id="attendedSelectedAdd">
       <div class="row">
         <!-- Artist Name -->
         <div class="input-field col s12">
           <i class="fas fa-music prefix"></i>
-          <input id="band_name" name="band_name" type="text" class="validate" required>
+          <input id="band_name" name="band_name" type="text" class="validate">
           <label for="band_name">Band/Artist Name?</label>
         </div>
       </div>
@@ -77,8 +77,7 @@
         <!-- Gig Review -->
         <div class="input-field col s12">
           <i class="fas fa-comments prefix"></i>
-          <textarea id="review" name="review" maxlength="300"
-            class="materialize-textarea validate"></textarea>
+          <textarea id="review" name="review" maxlength="300" class="materialize-textarea validate"></textarea>
           <label for="review">Review of the Gig</label>
         </div>
       </div>
@@ -102,9 +101,9 @@
           <label for="rating">Rating out of 10?</label>
         </div>
       </div>
-    </di
+    </div>
     <div class="row">
-      <!-- Edit Gig submission button -->
+      <!-- Add Gig submission button -->
       <div class="col s12 center-align">
         <div class="input-field inline">
           <button class="orange btn-large" type="submit" name="submit">
