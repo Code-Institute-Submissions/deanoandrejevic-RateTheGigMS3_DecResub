@@ -67,7 +67,7 @@ The structure of project is almost exactly as intended. I have an easy-to-unders
 # Testing
 
 HTML Validator
-- ![HTML]()
+- ![HTML](/static/readme/MS3-HTML-Validation.jpg)
 
 CSS Validator
 - ![CSS](/static/readme/MS3-CSS-Validator.PNG)
