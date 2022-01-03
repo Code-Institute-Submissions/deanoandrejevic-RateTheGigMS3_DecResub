@@ -30,8 +30,14 @@ h5 {
 
 /* Flashes */
 
-.flashes h5 {
+.flashes p {
     margin: 0;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.flashes strong {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: x-large;
 }
 
 /* Welcome box */
