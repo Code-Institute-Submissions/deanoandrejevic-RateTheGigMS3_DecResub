@@ -81,6 +81,16 @@ h5 {
     margin-bottom: 15px;
 }
 
+/* Gig Card Display */
+
+#attendedSelected {
+    display: none;
+}
+
+#upcomingSelected {
+    display: none;
+}
+
 /* search bar */
 
 .search-bar {

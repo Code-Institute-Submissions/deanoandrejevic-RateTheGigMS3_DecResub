@@ -59,3 +59,20 @@ $(document).ready(function () {
         });
     }
 });
+
+
+// This function is to display different options when a certain category is selected. CREDIT: https://jsfiddle.net/uftr0qa4/2/
+
+var category = document.querySelector("#category_name");
+var attendedTarget = document.getElementById("attendedSelected");
+var upcomingTarget = document.getElementById("upcomingSelected");
+
+category.addEventListener("change", function () {
+    if (category.value == "Attended") {
+        attendedTarget.style = "display: block;";
+        upcomingTarget.style = "display: none;";
+    } else if (category.value == "Upcoming") {
+        upcomingTarget.style = "display: block;";
+        attendedTarget.style = "display: none;";
+    }
+})
