@@ -135,7 +135,11 @@ No Reported Issues on these devices
 **When I have added said reviews I want to be able view only my reviews under a dedicated page**
 - Once you have added said gig review you are able to view it from your profile page and also the home page. Unlike the homepage however you account page will ONLY show your gigs.
 
-****
+**When I am in my profile page, I would like to be able to add new gig reviews and edit reviews and delete reviews**
+- When you are in your account page you are able to edit existing reviews that you have made by clicking the edit button. You are also able to delete reviews which will make it not only disappear for you but for every user of the website.
+
+**When I have done any of these tasks, I would like on screen feedback when they have been successfully.**
+- Once you have added, edited or deleted any of the reviews you be given on screen feedback which will tell you if any changes made have been successsful.
 
 ### Bugs
 
