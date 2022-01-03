@@ -54,7 +54,7 @@
         </ul>
         <!-- I have added Jinja templating so the that when users are logged in certain buttons appear and disappear -->
     </header>
-    <section>
+    <div>
         <!-- Flash Messages! -->
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -65,7 +65,7 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
-    </section>
+    </div>
     {% block home %} {% endblock %}
 
     <main class="container">{% block content %} {% endblock %}</main>
