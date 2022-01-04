@@ -158,6 +158,9 @@ def login():
     """
 
     class LoginForm(FlaskForm):
+        """
+        This Class is for the log in form
+        """
 
         username = StringField(
             'Username',
@@ -211,6 +214,10 @@ def add_gig():
     """
 
     class AddGigForm(FlaskForm):
+        """
+        This Class is for adding a new gig to your profile and to the
+        database
+        """
         band_name = StringField(
             'Band/Artist Name?',
             [
@@ -273,7 +280,10 @@ def edit_gig(gig_id):
     """
 
     class EditGigForm(FlaskForm):
-
+        """
+        This is just for the submission button which will take
+        advantage of the CSRF_TOKEN
+        """
         submit = SubmitField(
             'Edit Gig'
         )
