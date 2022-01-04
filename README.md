@@ -146,11 +146,18 @@ No Reported Issues on these devices
 
 ### Bugs
 
-I am currently experiencing a bug where the wrong review card is being deleted. If I select the delete button on one of the cards it will always delete the first review card on the list. The issue started when I added a confirmation Modal to the app. I would assume that this is the issue, but I want to iron it out, so I can keep the Modal, and it deletes the correct review card.
+1. I am currently experiencing a bug where the wrong review card is being deleted. If I select the delete button on one of the cards it will always delete the first review card on the list. The issue started when I added a confirmation Modal to the app. I would assume that this is the issue, but I want to iron it out, so I can keep the Modal, and it deletes the correct review card.
 
 *UPDATE FIXED**
 
 The issue with the deletion was the modal. I have removed the modal for now until I find a solution to fix it properly. I have reached out for help but haven't got the time to implement it right now.
+
+2. Currently experiencing an issue with where the csrf token upon login is bad.
+
+**UPDATE FIXED**
+
+The issue with the csrf token was it wasn't imported in the app.py file and it also needed to be added to the login form!
+
 
 # Technologies Used
 

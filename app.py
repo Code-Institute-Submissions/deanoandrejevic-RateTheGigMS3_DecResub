@@ -66,7 +66,7 @@ def register():
     redirected to their profile page.
     """
 
-    class CreateUserForm(FlaskForm):
+    class CreateNewUser(FlaskForm):
         """
         This Class is the registration form which will validate
         all fields and also verify the password matches in both
@@ -120,7 +120,7 @@ def register():
             'Sign Up'
         )
 
-    form = CreateUserForm(request.form)
+    form = CreateNewUser(request.form)
 
     if form.validate_on_submit():
         existing_user = mongo.db.users.find_one(
@@ -144,7 +144,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("You have registered successfully!")
         return redirect(url_for("profile", username=session["user"]))
-    
+
     return render_template("register.html", form=form)
 
 
@@ -155,7 +155,30 @@ def login():
     database. They will be redirected to their profile page once
     logged in
     """
-    if request.method == "POST":
+
+    class LoginForm(FlaskForm):
+
+        username = StringField(
+            'Username',
+            [
+                validators.DataRequired()
+            ]
+        )
+
+        password = PasswordField(
+            'Password',
+            [
+                validators.DataRequired(message='Field Required'),
+            ]
+        )
+
+        submit = SubmitField(
+            'Sign In'
+        )
+
+    form = LoginForm()
+
+    if request.method == "POST" and form.validate_on_submit():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -176,7 +199,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("login.html")
+    return render_template("login.html", form=form)
 
 
 @app.route("/add_gig", methods=["GET", "POST"])
