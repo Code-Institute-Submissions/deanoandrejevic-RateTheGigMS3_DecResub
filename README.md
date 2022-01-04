@@ -148,7 +148,7 @@ No Reported Issues on these devices
 
 1. I am currently experiencing a bug where the wrong review card is being deleted. If I select the delete button on one of the cards it will always delete the first review card on the list. The issue started when I added a confirmation Modal to the app. I would assume that this is the issue, but I want to iron it out, so I can keep the Modal, and it deletes the correct review card.
 
-*UPDATE FIXED**
+**UPDATE FIXED**
 
 The issue with the deletion was the modal. I have removed the modal for now until I find a solution to fix it properly. I have reached out for help but haven't got the time to implement it right now.
 
