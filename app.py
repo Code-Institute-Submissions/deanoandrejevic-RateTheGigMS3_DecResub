@@ -4,7 +4,8 @@ from flask import (
     redirect, request, session, url_for)
 from flask_wtf import FlaskForm
 from wtforms import Form, StringField, SubmitField, \
-    PasswordField, SubmitField, validators
+    PasswordField, SubmitField, SelectField, validators, \
+    DateField, TextAreaField
 from flask_wtf.csrf import CSRFProtect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -178,7 +179,7 @@ def login():
 
     form = LoginForm()
 
-    if request.method == "POST" and form.validate_on_submit():
+    if form.validate_on_submit():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -208,7 +209,46 @@ def add_gig():
     This function is allows the user to add a gig to the database, they will
     also get a prompt when the gig is added successfully
     """
-    if request.method == "POST":
+
+    class AddGigForm(FlaskForm):
+        band_name = StringField(
+            'Band/Artist Name?',
+            [
+                validators.data_required()
+            ]
+        )
+
+        where = StringField(
+            'Where is the Venue?',
+            [
+                validators.data_required()
+            ]
+        )
+
+        when = DateField(
+            'When is the Gig?',
+            [
+                validators.data_required()
+            ]
+        )
+
+        description = StringField(
+            'Review of the Gig',
+        )
+
+        rating = SelectField(
+            'Rating out of 10?',
+            choices=[('0'), ('1'), ('2'), ('3'), ('4'), ('5'), ('6'), ('7'), ('8'),
+                                                        ('9'), ('10')]
+        )
+
+        submit = SubmitField(
+            'Add Gig'
+        )
+
+    form = AddGigForm()
+
+    if form.validate_on_submit():
         gig = {
             "category_name": request.form.get("category_name"),
             "band_name": request.form.get("band_name"),
@@ -221,9 +261,8 @@ def add_gig():
         mongo.db.gigs.insert_one(gig)
         flash("Gig added Successfully!")
         return redirect(url_for("profile"))
-
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_gig.html", categories=categories)
+    return render_template("add_gig.html", categories=categories, form=form)
 
 
 @app.route("/edit_gig/<gig_id>", methods=["GET", "POST"])
@@ -232,7 +271,46 @@ def edit_gig(gig_id):
     Function allows user to edit gigs with the values they
     have already submitted to the database
     """
-    if request.method == "POST":
+
+    class EditGigForm(FlaskForm):
+        band_name = StringField(
+            'Band/Artist Name?',
+            [
+                validators.data_required()
+            ]
+        )
+
+        where = StringField(
+            'Where is the Venue?',
+            [
+                validators.data_required()
+            ]
+        )
+
+        when = DateField(
+            'When is the Gig?',
+            [
+                validators.data_required()
+            ]
+        )
+
+        description = StringField(
+            'Review of the Gig',
+        )
+
+        rating = SelectField(
+            'Rating out of 10?',
+            choices=[('0'), ('1'), ('2'), ('3'), ('4'), ('5'), ('6'), ('7'), ('8'),
+                                                        ('9'), ('10')]
+        )
+
+        submit = SubmitField(
+            'Add Gig'
+        )
+
+    form = EditGigForm()
+
+    if form.validate_on_submit():
         gig_edit = {
             "category_name": request.form.get("category_name"),
             "band_name": request.form.get("band_name"),
@@ -248,7 +326,7 @@ def edit_gig(gig_id):
 
     gig = mongo.db.gigs.find_one({"_id": ObjectId(gig_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_gig.html", gig=gig, categories=categories)
+    return render_template("edit_gig.html", gig=gig, categories=categories, form=form)
 
 
 @app.route("/delete/<gigs_id>")

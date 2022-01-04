@@ -33,54 +33,40 @@
             <!-- Artist Name -->
             <div class="input-field col s12">
                 <i class="fas fa-music prefix"></i>
-                <input id="band_name" name="band_name" type="text" value="{{ gig.band_name }}" class="validate"
-                    required>
-                <label for="band_name">Band/Artist Name?</label>
+                {{ form.band_name }}
+                {{ form.band_name.label }}
             </div>
         </div>
         <div class="row">
             <!-- Venue Name -->
             <div class="input-field col s12">
                 <i class="fas fa-landmark prefix"></i>
-                <input id="where" name="where" type="text" value="{{ gig.where }}" class="validate" required>
-                <label for="where">Where was the Venue?</label>
+                {{ form.where }}
+                {{ form.where.label }}
             </div>
         </div>
         <div class="row">
             <!-- Date of Venue -->
             <div class="input-field col s12">
                 <i class="fas fa-calendar-alt prefix"></i>
-                <input id="when" name="when" type="text" value="{{ gig.when }}" class="datepicker validate" required>
-                <label for="when">When was the Gig?</label>
+                {{ form.when }}
+                {{ form.when.label }}
             </div>
         </div>
         <div class="row">
             <!-- Gig Review -->
             <div class="input-field col s12">
                 <i class="fas fa-comments prefix"></i>
-                <textarea id="review" name="review" maxlength="300"
-                    class="materialize-textarea validate">{{ gig.description }}</textarea>
-                <label for="review">Review of the Gig</label>
+                {{ form.description }}
+                {{ form.description.label }}
             </div>
         </div>
         <div class="row">
             <!-- Gig Rating -->
             <div class="input-field col s12">
                 <i class="fas fa-star-half-alt prefix"></i>
-                <select name="rating" id="rating" class="validate">
-                    <option value="" disabled selected>{{ gig.rating }}</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <label for="rating">Rating out of 10?</label>
+                {{ form.rating }}
+                {{ form.rating.label }}
             </div>
         </div>
         <div class="row">
