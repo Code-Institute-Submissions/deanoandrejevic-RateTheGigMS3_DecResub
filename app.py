@@ -97,7 +97,7 @@ def login():
         if existing_user:
 
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("confirmpassword")):
                         session["user"] = request.form.get("username").lower()
                         return redirect(url_for(
                             "profile", username=session["user"]))
