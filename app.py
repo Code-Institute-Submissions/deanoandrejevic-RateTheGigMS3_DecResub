@@ -3,7 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, \
+from wtforms import Form, StringField, SubmitField, \
     PasswordField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, \
     EqualTo, Length
@@ -14,7 +14,7 @@ if os.path.exists("env.py"):
     import env
 
 
-app = Flask(__name__, template_folder='.')
+app = Flask(__name__)
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -65,38 +65,58 @@ def register():
     a prompt when registration is successful and will be
     redirected to their profile page.
     """
+
     class CreateUserForm(FlaskForm):
+        """
+        This Class is the registration form which will validate
+        all fields and also verify the password matches in both
+        fields
+        """
+
         fname = StringField(
-            label=('fname'),
+            label=('First Name'),
             validators=[DataRequired()]
         )
 
         lname = StringField(
-            label=('lname'),
+            label=('Last Name'),
             validators=[DataRequired()]
         )
 
         username = StringField(
-            label=('username'),
+            label=('Username'),
             validators=[DataRequired(),
                         Length(max=24)]
         )
 
         password = PasswordField(
-            label=('password'),
+            label=('Password'),
             validators=[DataRequired(),
-                        Length(min=6, message='Your Password should be at least %(min) characters long')]
+                        Length(
+                            min=6,
+                            message='Your Password should be at least %(min)\
+                                 characters long'
+                            )
+                        ]
         )
 
         confirmpassword = PasswordField(
-            label=('confirm_password'),
+            label=('Confirm Password'),
             validators=[DataRequired(message='*Required Field'),
-                        EqualTo('password', message='Both Password Fields Must Match!')]
+                        EqualTo(
+                            'password',
+                            message='Both Password Fields Must Match!'
+                            )
+                        ]
         )
 
-    form = CreateUserForm()
+        submit = SubmitField(
+            label=('Sign Up')
+        )
 
-    if request.method == "POST":
+    form = CreateUserForm(request.form)
+
+    if request.method == "POST" and form.validate():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -104,13 +124,16 @@ def register():
             flash("Username is already in use")
             return redirect(url_for("register"))
 
-        register = {
-            "first_name": request.form.get("fname").lower(),
-            "last_name": request.form.get("lname").lower(),
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+        registerdata = {
+            "first_name": form.fname.data.lower(),
+            "last_name": form.lname.data.lower(),
+            "username": form.username.data.lower(),
+            "password": generate_password_hash(
+                form.confirmpassword.data
+                )
         }
-        mongo.db.users.insert_one(register)
+
+        mongo.db.users.insert_one(registerdata)
 
         session["user"] = request.form.get("username").lower()
         flash("You have registered successfully!")
@@ -133,7 +156,7 @@ def login():
         if existing_user:
 
             if check_password_hash(
-                    existing_user["password"], request.form.get("confirmpassword")):
+                    existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 return redirect(url_for(
                     "profile", username=session["user"]))
