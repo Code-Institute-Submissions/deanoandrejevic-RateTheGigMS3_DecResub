@@ -8,6 +8,7 @@
 
 <div class="row card-panel">
     <form class="col s12" method="POST" action="{{ url_for('edit_gig', gig_id=gig._id) }}">
+        {{ form.csrf_token }}
         <div class="row">
             <!-- Category name -->
             <div class="input-field col s12">
@@ -33,52 +34,58 @@
             <!-- Artist Name -->
             <div class="input-field col s12">
                 <i class="fas fa-music prefix"></i>
-                {{ form.band_name }}
-                {{ form.band_name.label }}
+                <input id="band_name" name="band_name" type="text" value="{{ gig.band_name }}" class="validate"
+                    required>
+                <label for="band_name">Band/Artist Name?</label>
             </div>
         </div>
         <div class="row">
             <!-- Venue Name -->
             <div class="input-field col s12">
                 <i class="fas fa-landmark prefix"></i>
-                {{ form.where }}
-                {{ form.where.label }}
+                <input id="where" name="where" type="text" value="{{ gig.where }}" class="validate" required>
+                <label for="where">Where was the Venue?</label>
             </div>
         </div>
         <div class="row">
             <!-- Date of Venue -->
             <div class="input-field col s12">
                 <i class="fas fa-calendar-alt prefix"></i>
-                {{ form.when }}
-                {{ form.when.label }}
+                <input id="when" name="when" type="text" value="{{ gig.when }}" class="datepicker validate" required>
+                <label for="when">When was the Gig?</label>
             </div>
         </div>
         <div class="row">
             <!-- Gig Review -->
             <div class="input-field col s12">
                 <i class="fas fa-comments prefix"></i>
-                {{ form.description }}
-                {{ form.description.label }}
+                <textarea id="review" name="review" maxlength="300"
+                    class="materialize-textarea validate">{{ gig.description }}</textarea>
+                <label for="review">Review of the Gig</label>
             </div>
         </div>
         <div class="row">
             <!-- Gig Rating -->
             <div class="input-field col s12">
                 <i class="fas fa-star-half-alt prefix"></i>
-                {{ form.rating }}
-                {{ form.rating.label }}
+                <select name="rating" id="rating" class="validate">
+                    <option value="" disabled selected>{{ gig.rating }}</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="rating">Rating out of 10?</label>
             </div>
         </div>
         <div class="row">
-            <!-- Edit Gig submission button -->
-            <div class="col s12 center-align">
-                <div class="input-field inline">
-                    <button class="orange btn-large" type="submit" name="submit">
-                        Submit Gig
-                        <i class="fas fa-check"></i>
-                    </button>
-                </div>
-            </div>
+            {{ form.submit(class="col s6 offset-s3 orange btn-large") }}
         </div>
     </form>
 </div>

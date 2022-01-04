@@ -273,39 +273,9 @@ def edit_gig(gig_id):
     """
 
     class EditGigForm(FlaskForm):
-        band_name = StringField(
-            'Band/Artist Name?',
-            [
-                validators.data_required()
-            ]
-        )
-
-        where = StringField(
-            'Where is the Venue?',
-            [
-                validators.data_required()
-            ]
-        )
-
-        when = DateField(
-            'When is the Gig?',
-            [
-                validators.data_required()
-            ]
-        )
-
-        description = StringField(
-            'Review of the Gig',
-        )
-
-        rating = SelectField(
-            'Rating out of 10?',
-            choices=[('0'), ('1'), ('2'), ('3'), ('4'), ('5'), ('6'), ('7'), ('8'),
-                                                        ('9'), ('10')]
-        )
 
         submit = SubmitField(
-            'Add Gig'
+            'Edit Gig'
         )
 
     form = EditGigForm()
