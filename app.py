@@ -4,9 +4,8 @@ from flask import (
     redirect, request, session, url_for)
 from flask_wtf import FlaskForm
 from wtforms import Form, StringField, SubmitField, \
-    PasswordField, SubmitField
-from wtforms.validators import ValidationError, DataRequired, \
-    EqualTo, Length
+    PasswordField, SubmitField, validators
+from flask_wtf.csrf import CSRFProtect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -15,11 +14,12 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
-
+csrf = CSRFProtect(app)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
 
 mongo = PyMongo(app)
 
@@ -74,51 +74,57 @@ def register():
         """
 
         fname = StringField(
-            label=('First Name'),
-            validators=[DataRequired()]
+            'First Name',
+            [
+                validators.DataRequired()
+                ]
         )
 
         lname = StringField(
-            label=('Last Name'),
-            validators=[DataRequired()]
+            'Last Name',
+            [
+                validators.DataRequired()
+            ]
         )
 
         username = StringField(
-            label=('Username'),
-            validators=[DataRequired(),
-                        Length(max=24)]
+            'Username',
+            [
+                validators.DataRequired(),
+                validators.Length(max=24)
+            ]
         )
 
         password = PasswordField(
-            label=('Password'),
-            validators=[DataRequired(),
-                        Length(
-                            min=6,
-                            message='Your Password should be at least %(min)\
-                                 characters long'
-                            )
-                        ]
+            'Password',
+            [
+                validators.DataRequired(message='Field Required'),
+                validators.Length(min=6, message='Your Password should be at\
+                     least %(min) characters long')
+            ]
         )
 
         confirmpassword = PasswordField(
-            label=('Confirm Password'),
-            validators=[DataRequired(message='*Required Field'),
-                        EqualTo(
-                            'password',
-                            message='Both Password Fields Must Match!'
-                            )
-                        ]
+            'Confirm Password',
+            [
+                validators.DataRequired(
+                    message='Please confirm your password'
+                    ),
+                validators.EqualTo(
+                    'password', message='Both Password fields must match!'
+                    )
+            ]
         )
 
         submit = SubmitField(
-            label=('Sign Up')
+            'Sign Up'
         )
 
     form = CreateUserForm(request.form)
 
-    if request.method == "POST" and form.validate():
+    if form.validate_on_submit():
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"username": form.username.data.lower()})
 
         if existing_user:
             flash("Username is already in use")
@@ -139,6 +145,7 @@ def register():
         flash("You have registered successfully!")
         return redirect(url_for("profile", username=session["user"]))
 
+    flash(form.errors)
     return render_template("register.html", form=form)
 
 
