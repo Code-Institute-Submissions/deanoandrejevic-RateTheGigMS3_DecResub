@@ -2,6 +2,11 @@ import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, \
+    PasswordField, SubmitField
+from wtforms.validators import ValidationError, DataRequired, \
+    EqualTo, Length
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -9,7 +14,7 @@ if os.path.exists("env.py"):
     import env
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -60,6 +65,37 @@ def register():
     a prompt when registration is successful and will be
     redirected to their profile page.
     """
+    class CreateUserForm(FlaskForm):
+        fname = StringField(
+            label=('fname'),
+            validators=[DataRequired()]
+        )
+
+        lname = StringField(
+            label=('lname'),
+            validators=[DataRequired()]
+        )
+
+        username = StringField(
+            label=('username'),
+            validators=[DataRequired(),
+                        Length(max=24)]
+        )
+
+        password = PasswordField(
+            label=('password'),
+            validators=[DataRequired(),
+                        Length(min=6, message='Your Password should be at least %(min) characters long')]
+        )
+
+        confirmpassword = PasswordField(
+            label=('confirm_password'),
+            validators=[DataRequired(message='*Required Field'),
+                        EqualTo('password', message='Both Password Fields Must Match!')]
+        )
+
+    form = CreateUserForm()
+
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -80,7 +116,7 @@ def register():
         flash("You have registered successfully!")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("register.html")
+    return render_template("register.html", form=form)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -98,9 +134,9 @@ def login():
 
             if check_password_hash(
                     existing_user["password"], request.form.get("confirmpassword")):
-                        session["user"] = request.form.get("username").lower()
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password
                 flash("Incorrect Username and/or Password")

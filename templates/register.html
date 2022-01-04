@@ -13,44 +13,41 @@
                 <!-- First name field -->
                 <div class="input-field col s6">
                     <i class="fas fa-signature prefix"></i>
-                    <input id="fname" name="fname" type="text" class="validate" required>
-                    <label for="fname">First Name</label>
+                    {{ form.fname }}
+                    {{ form.fname.label }}
                 </div>
                 <div class="row">
                     <!-- Last name field -->
                     <div class="input-field col s6">
                         <i class="material-icons prefix"></i>
-                        <input id="lname" name="lname" type="text" class="validate" required>
-                        <label for="lname">Last Name</label>
+                        {{ form.lname }}
+                        {{ form.lname.label }}
                     </div>
                 </div>
                 <div class="row">
                     <!-- Username Field -->
                     <div class="input-field col s12">
                         <i class="fas fa-user-cog prefix"></i>
-                        <input id="username" name="username" minlength="6" maxlength="20" type="text" class="validate"
-                            required>
-                        <label for="username">Username</label>
+                        {{ form.username }}
+                        {{ form.username.label }}
                     </div>
                 </div>
                 <div class="row">
                     <!-- Password Field -->
                     <div class="input-field col s6">
                         <i class="fas fa-user-lock prefix"></i>
-                        <input id="password" name="password" minlength="8" maxlength="20" type="password"
-                            class="validate" required>
-                        <label for="password">Password</label>
+                        {{ form.password }}
+                        {{ form.password.label }}
                     </div>
                     <div class="input-field col s6">
                         <i class="fas fa-user-lock prefix"></i>
-                        <input id="confirmpassword" name="confirmpassword" minlength="8" maxlength="20" type="password"
-                            class="validate" required>
-                        <label for="confirmpassword">Confirm Password</label>
+                        {{ form.confirmpassword }}
+                        {{ form.confirmpassword.label }}
                     </div>
                 </div>
                 <div class="row">
                     <!-- Sign Up Button -->
-                    <button type="submit" onload="validatePassword()" class="col s6 offset-s3 orange btn-large">
+                    <button type="submit" class="col s6 offset-s3 orange btn-large">
                         Sign Up <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
