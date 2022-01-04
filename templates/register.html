@@ -1,22 +1,29 @@
 {% extends "base.html" %}
 
-<div>
-    <!-- Flash Messages! -->
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="flashes">
-        <p class="black white-text center-align"><strong>{{ message }}</strong></p>
+{% block error_message %}
+<div class="col s12">
+    {% if form.confirmpassword.errors %}
+    <div class="error">
+        {% for error in form.confirmpassword.errors %}
+        <p class="red lighten-2 black-text center-align"><strong>{{ error }}</strong></p>
+        {% endfor %}
     </div>
-    {% endfor %}
     {% endif %}
-    {% endwith %}
+    {% if form.password.errors %}
+    <div class="error">
+        {% for error in form.password.errors %}
+        <p class="black white-text center-align"><strong>{{ error }}</strong></p>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
+{% endblock %}
 
 {% block content %}
 
 <h2 class="center-align">Sign Up</h2>
-<p class="center-align">By signing up today you will be able to review gigs you've been to as well as schedule upcoming
+<p class="center-align">By signing up today you will be able to review gigs you've been to as well as schedule
+    upcoming
     gigs ready to review later!</p>
 
 <div class="row">

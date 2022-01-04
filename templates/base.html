@@ -66,6 +66,11 @@
         {% endif %}
         {% endwith %}
     </div>
+    
+    {% block error_message %}
+
+    {% endblock %}
+
     {% block home %} {% endblock %}
 
     <main class="container">{% block content %} {% endblock %}</main>

@@ -110,3 +110,13 @@ h5 {
     font-size: large;
 }
 
+/* Error Message */
+
+.error p {
+    margin: 0;
+}
+
+.error strong {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: xx-large;
+}
