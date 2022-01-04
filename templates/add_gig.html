@@ -22,12 +22,12 @@
         <label for="category_name">Attended or Upcoming?</label>
       </div>
     </div>
-    <div id="upcomingSelectedAdd">
+    <div id="allForms">
       <div class="row">
         <!-- Artist Name -->
         <div class="input-field col s12">
           <i class="fas fa-music prefix"></i>
-          <input id="band_name" name="band_name" type="text" class="validate">
+          <input id="band_name" name="band_name" type="text" class="validate" required>
           <label for="band_name">Band/Artist Name?</label>
         </div>
       </div>
@@ -35,7 +35,7 @@
         <!-- Venue Name -->
         <div class="input-field col s12">
           <i class="fas fa-landmark prefix"></i>
-          <input id="where" name="where" type="text" class="validate">
+          <input id="where" name="where" type="text" class="validate" required>
           <label for="where">Where is the Venue?</label>
         </div>
       </div>
@@ -43,36 +43,12 @@
         <!-- Date of Venue -->
         <div class="input-field col s12">
           <i class="fas fa-calendar-alt prefix"></i>
-          <input id="when" name="when" type="text" class="datepicker validate">
+          <input id="when" name="when" type="text" class="datepicker validate" required>
           <label for="when">When is the Gig?</label>
         </div>
       </div>
     </div>
-    <div id="attendedSelectedAdd">
-      <div class="row">
-        <!-- Artist Name -->
-        <div class="input-field col s12">
-          <i class="fas fa-music prefix"></i>
-          <input id="band_name" name="band_name" type="text" class="validate">
-          <label for="band_name">Band/Artist Name?</label>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Venue Name -->
-        <div class="input-field col s12">
-          <i class="fas fa-landmark prefix"></i>
-          <input id="where" name="where" type="text" class="validate">
-          <label for="where">Where was the Venue?</label>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Date of Venue -->
-        <div class="input-field col s12">
-          <i class="fas fa-calendar-alt prefix"></i>
-          <input id="when" name="when" type="text" class="datepicker validate">
-          <label for="when">When was the Gig?</label>
-        </div>
-      </div>
+    <div id="attendedForm">
       <div class="row">
         <!-- Gig Review -->
         <div class="input-field col s12">

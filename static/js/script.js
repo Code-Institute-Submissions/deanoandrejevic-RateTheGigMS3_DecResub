@@ -61,18 +61,18 @@ $(document).ready(function () {
 });
 
 
-// This function is to display different options when a certain category is selected
+// This function is to display different options when a certain category is selected in add gigs form
 
 const category = document.querySelector("#category_name");
-const attendedTargetAdd = document.getElementById("attendedSelectedAdd");
-const upcomingTargetAdd = document.getElementById("upcomingSelectedAdd");
+const attendedTargetAdd = document.getElementById("allForms");
+const upcomingTargetAdd = document.getElementById("attendedForm");
 
-category.addEventListener("change", "load", function () {
+category.addEventListener("change", function () {
     if (category.value == "Attended") {
         attendedTargetAdd.style = "display: block;";
-        upcomingTargetAdd.style = "display: none;";
-    } else if (category.value == "Upcoming") {
         upcomingTargetAdd.style = "display: block;";
-        attendedTargetAdd.style = "display: none;";
+    } else if (category.value == "Upcoming") {
+        upcomingTargetAdd.style = "display: none;";
+        attendedTargetAdd.style = "display: block;";
     }
 })
